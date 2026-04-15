@@ -1,0 +1,10 @@
+{
+  "escrow": "0x2faDd0a35ce58bF62F452f25679da8B9cCD1E0Cb",
+  "tokenA": "0x83aE4e75fC301b985CA6225c9C330b28B34f8117",
+  "tokenB": "0x4D263ca2E5806F5933CD4A334F4bBaDEdc2505eC",
+  "arbiter": "0x344fdf33c7907c1267c73b940ce91741097cea49",
+  "network": "xlayer-testnet",
+  "chainId": 1952,
+  "deployedAt": "2026-04-15T20:58:18.970Z",
+  "deployer": "0x8fb3e2F692d9Fef6D5E9410c9f048c55394160Db"
+}

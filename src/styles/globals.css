@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   CSS Custom Properties — mirrored from src/design/tokens.ts
+   Update tokens.ts first, then sync changes here.
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Color */
+  --color-bg:           #0a0a0a;
+  --color-surface:      #111111;
+  --color-border:       #1e1e1e;
+  --color-accent:       #C8A84B;
+  --color-text:         #e8e8e8;
+  --color-text-muted:   #666666;
+  --color-danger:       #c0392b;
+  --color-success:      #27ae60;
+
+  /* Border Radius — 3 values, no others permitted */
+  --radius-sharp:  2px;
+  --radius-card:   4px;
+  --radius-modal:  8px;
+
+  /* Animation */
+  --ease-snappy:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:      100ms;
+  --dur-base:      200ms;
+  --dur-slow:      350ms;
+
+  /* Typography — populated by next/font in layout.tsx */
+  /* --font-mono and --font-ui are injected at runtime */
+}
+
+/* ---------------------------------------------------------------------------
+   Base Reset
+   --------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Prevent layout shift from scrollbar appearing */
+  scrollbar-gutter: stable;
+}
+
+/* ---------------------------------------------------------------------------
+   Body defaults
+   --------------------------------------------------------------------------- */
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 0.875rem; /* 14px base */
+  line-height: 1.5;
+  min-height: 100dvh;
+}
+
+/* ---------------------------------------------------------------------------
+   Scrollbar — terminal aesthetic
+   --------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-sharp);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Typography utilities — use these classes, not raw font-family
+   --------------------------------------------------------------------------- */
+
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-mono), "Courier New", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .font-ui {
+    font-family: var(--font-ui), system-ui, sans-serif;
+  }
+
+  /* Numeric data — always monospaced, fixed column width */
+  .tabular {
+    font-family: var(--font-mono), monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+  }
+
+  /* Truncated wallet address */
+  .address {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* Deal value — the number that matters */
+  .deal-value {
+    font-family: var(--font-mono), monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-accent);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Selection
+   --------------------------------------------------------------------------- */
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
+  color: var(--color-text);
+}
+
+/* ---------------------------------------------------------------------------
+   Focus ring — terminal-style, no browser default
+   --------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 2px;
+}
